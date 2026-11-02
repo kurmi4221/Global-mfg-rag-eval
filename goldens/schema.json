@@ -1,0 +1,285 @@
+{
+  "$defs": {
+    "CriticalValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit"
+      ],
+      "title": "CriticalValue",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "doc_id": {
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "revision": {
+          "title": "Revision",
+          "type": "string"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        }
+      },
+      "required": [
+        "doc_id",
+        "revision"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Golden": {
+      "additionalProperties": false,
+      "properties": {
+        "golden_id": {
+          "title": "Golden Id",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "intent": {
+          "title": "Intent",
+          "type": "string"
+        },
+        "expected_behavior": {
+          "default": "ANSWER",
+          "enum": [
+            "ANSWER",
+            "REFUSE",
+            "CLARIFY",
+            "ESCALATE"
+          ],
+          "title": "Expected Behavior",
+          "type": "string"
+        },
+        "language": {
+          "default": "en",
+          "title": "Language",
+          "type": "string"
+        },
+        "split": {
+          "default": "dev",
+          "enum": [
+            "dev",
+            "holdout"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "ideal_answer": {
+          "default": "",
+          "title": "Ideal Answer",
+          "type": "string"
+        },
+        "gold_evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Gold Evidence",
+          "type": "array"
+        },
+        "must_include": {
+          "items": {
+            "$ref": "#/$defs/MustInclude"
+          },
+          "title": "Must Include",
+          "type": "array"
+        },
+        "must_not_include": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Must Not Include",
+          "type": "array"
+        },
+        "critical_values": {
+          "items": {
+            "$ref": "#/$defs/CriticalValue"
+          },
+          "title": "Critical Values",
+          "type": "array"
+        },
+        "identifiers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Identifiers",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "golden_id",
+        "question",
+        "severity",
+        "intent",
+        "provenance"
+      ],
+      "title": "Golden",
+      "type": "object"
+    },
+    "MustInclude": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "default": "warning",
+          "enum": [
+            "warning",
+            "term"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "MustInclude",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "enum": [
+            "SME",
+            "production",
+            "synthetic"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "author": {
+          "title": "Author",
+          "type": "string"
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewer"
+        },
+        "approved_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approved At"
+        },
+        "pii_scrubbed": {
+          "default": true,
+          "title": "Pii Scrubbed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source",
+        "author"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "dataset_version": {
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "app_id": {
+      "title": "App Id",
+      "type": "string"
+    },
+    "tier": {
+      "enum": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "title": "Tier",
+      "type": "string"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/Golden"
+      },
+      "title": "Cases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset_version",
+    "app_id",
+    "tier",
+    "cases"
+  ],
+  "title": "GoldenDataset",
+  "type": "object"
+}

@@ -1,0 +1,57 @@
+
+>>> 1/3  Bless the baseline: pipeline variant 'good'
+
+>>> 2/3  Candidate = same pipeline, re-run (should PASS)
+========================================================================================
+candidate : candidate: no change  manifest=0271dbf31a8c dataset=2026.11.0 policy=2026.11
+tier      : T1
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+metric                              baseline  candidate    delta  status
+retrieval_recall.mean                  1.000      1.000    0.000  flat
+citation_accuracy.pass_rate            1.000      1.000    0.000  flat
+revision_currency.pass_rate            1.000      1.000    0.000  flat
+identifier_fidelity.pass_rate          1.000      1.000    0.000  flat
+numeric_unit_fidelity.pass_rate        1.000      1.000    0.000  flat
+mandatory_warning.pass_rate            1.000      1.000    0.000  flat
+refusal_behavior.pass_rate             1.000      1.000    0.000  flat
+retrieval_mrr.mean                     1.000      1.000    0.000  flat
+run.weighted_score                     1.000      1.000    0.000  flat
+faithfulness.mean                          -          -        -  no_baseline_value
+answer_relevancy.mean                      -          -        -  no_baseline_value
+ops.latency_p95_ms                     0.190      0.110   -0.080  improved
+========================================================================================
+VERDICT: PASS
+========================================================================================
+
+>>> 3/3  Candidate = bad index update (stale revisions) + generator drops warnings
+========================================================================================
+candidate : candidate: stale index + dropped warnings  manifest=152839a0b0e2 dataset=2026.11.0 policy=2026.11
+tier      : T1
+----------------------------------------------------------------------------------------
+FAIL   S1_CRITICAL_FAILURE: 4 S1 critical failure(s) (allowed 0): ['G-001:revision_currency', 'G-002:mandatory_warning', 'G-002:revision_currency', 'G-004:mandatory_warning']
+FAIL   FLOOR_VIOLATION [citation_accuracy.pass_rate]: 0.778 < floor 0.950
+FAIL   FLOOR_VIOLATION [revision_currency.pass_rate]: 0.778 < floor 1.000
+FAIL   FLOOR_VIOLATION [mandatory_warning.pass_rate]: 0.333 < floor 1.000
+FAIL   REGRESSION [citation_accuracy.pass_rate]: 1.000 -> 0.778 (worse by 0.222, tolerance 0.030)
+FAIL   REGRESSION [revision_currency.pass_rate]: 1.000 -> 0.778 (worse by 0.222, tolerance 0.030)
+FAIL   REGRESSION [mandatory_warning.pass_rate]: 1.000 -> 0.333 (worse by 0.667, tolerance 0.030)
+REVIEW REGRESSION [retrieval_mrr.mean]: 1.000 -> 0.889 (worse by 0.111, tolerance 0.030)
+REVIEW REGRESSION [run.weighted_score]: 1.000 -> 0.859 (worse by 0.141, tolerance 0.030)
+----------------------------------------------------------------------------------------
+metric                              baseline  candidate    delta  status
+retrieval_recall.mean                  1.000      1.000    0.000  flat
+citation_accuracy.pass_rate            1.000      0.778   -0.222  REGRESSED
+revision_currency.pass_rate            1.000      0.778   -0.222  REGRESSED
+identifier_fidelity.pass_rate          1.000      1.000    0.000  flat
+numeric_unit_fidelity.pass_rate        1.000      1.000    0.000  flat
+mandatory_warning.pass_rate            1.000      0.333   -0.667  REGRESSED
+refusal_behavior.pass_rate             1.000      1.000    0.000  flat
+retrieval_mrr.mean                     1.000      0.889   -0.111  REGRESSED
+run.weighted_score                     1.000      0.859   -0.141  REGRESSED
+faithfulness.mean                          -          -        -  no_baseline_value
+answer_relevancy.mean                      -          -        -  no_baseline_value
+ops.latency_p95_ms                     0.190      0.128   -0.061  improved
+========================================================================================
+VERDICT: FAIL
+========================================================================================

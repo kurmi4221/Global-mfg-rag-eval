@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Demo: gate blocks a broken release",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "mfg_rag_eval",
+      "args": ["demo"],
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Run eval suite (good)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "mfg_rag_eval",
+      "args": ["run", "--variant", "good"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Online worker demo",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "mfg_rag_eval",
+      "args": ["online-demo"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Pytest: current file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-v"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

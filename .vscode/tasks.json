@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "test", "type": "shell", "command": "uv run pytest --cov", "group": "test" },
+    { "label": "lint", "type": "shell", "command": "uv run ruff check . ; uv run ruff format --check . ; uv run mypy", "group": "build" },
+    { "label": "demo", "type": "shell", "command": "uv run mfg-rag-eval demo", "group": "none" }
+  ]
+}

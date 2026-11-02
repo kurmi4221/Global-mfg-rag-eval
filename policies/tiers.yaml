@@ -1,0 +1,82 @@
+# Release policy. Versioned in git; every run records the policy version and file hash.
+# T1 = safety-critical, T2 = quality-critical, T3 = informational.
+#
+# Metric ids are "<metric>.<stat>" where stat is mean | pass_rate | wilson_lower.
+# Gate metrics: must exist, be finite, meet floors, and not regress (else FAIL, fail-closed).
+# Guardrail metrics: regression => REVIEW (a named approver decides and the decision is logged).
+
+policy_version: "2026.11"
+
+severity_weights: {S1: 10, S2: 3, S3: 1}
+
+regression:
+  default_tolerance: 0.03        # replace with 2*sigma calibrated from >=10 unchanged runs
+  tolerances: {}                 # per-metric overrides, e.g. retrieval_recall.mean: 0.02
+  relative_tolerance_ops: 0.25
+  ops_latency_abs_tolerance_ms: 50
+  history_window: 3
+
+tiers:
+  T1:
+    critical_metrics:
+      - numeric_unit_fidelity
+      - mandatory_warning
+      - identifier_fidelity
+      - revision_currency
+      - refusal_behavior
+    s1_failures_allowed: 0
+    gate_metrics:
+      - retrieval_recall.mean
+      - citation_accuracy.pass_rate
+      - revision_currency.pass_rate
+      - identifier_fidelity.pass_rate
+      - numeric_unit_fidelity.pass_rate
+      - mandatory_warning.pass_rate
+      - refusal_behavior.pass_rate
+    guardrail_metrics:
+      - retrieval_mrr.mean
+      - run.weighted_score
+      - faithfulness.mean          # only present when a judge is configured
+      - answer_relevancy.mean
+      - ops.latency_p95_ms
+    floors:
+      retrieval_recall.mean: 0.95
+      citation_accuracy.pass_rate: 0.95
+      revision_currency.pass_rate: 1.0
+      identifier_fidelity.pass_rate: 0.95
+      numeric_unit_fidelity.pass_rate: 1.0
+      mandatory_warning.pass_rate: 1.0
+      refusal_behavior.pass_rate: 0.95
+    ceilings:
+      ops.latency_p95_ms: 4000
+    approvals: [qa_owner, plant_safety_officer]
+
+  T2:
+    critical_metrics: [numeric_unit_fidelity, identifier_fidelity, revision_currency]
+    s1_failures_allowed: 0
+    gate_metrics:
+      - retrieval_recall.mean
+      - citation_accuracy.pass_rate
+      - revision_currency.pass_rate
+      - refusal_behavior.pass_rate
+    guardrail_metrics: [retrieval_mrr.mean, run.weighted_score, ops.latency_p95_ms]
+    floors:
+      retrieval_recall.mean: 0.90
+      citation_accuracy.pass_rate: 0.90
+      revision_currency.pass_rate: 0.97
+      refusal_behavior.pass_rate: 0.90
+    ceilings:
+      ops.latency_p95_ms: 4000
+    approvals: [qa_owner]
+
+  T3:
+    critical_metrics: [revision_currency]
+    s1_failures_allowed: 0
+    gate_metrics:
+      - retrieval_recall.mean
+      - refusal_behavior.pass_rate
+    guardrail_metrics: [run.weighted_score, ops.latency_p95_ms]
+    floors:
+      retrieval_recall.mean: 0.80
+      refusal_behavior.pass_rate: 0.85
+    approvals: [app_owner]

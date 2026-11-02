@@ -1,0 +1,376 @@
+{
+  "dataset_version": "2026.11.0",
+  "app_id": "maint-assist-demo",
+  "tier": "T1",
+  "cases": [
+    {
+      "golden_id": "G-001",
+      "question": "What must I verify before touching any conductor during pump motor lockout?",
+      "severity": "S1",
+      "intent": "safety_procedure",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "Verify the zero energy state with a calibrated voltmeter.",
+      "gold_evidence": [
+        {
+          "doc_id": "SOP-LOTO-0042",
+          "revision": "F",
+          "section": "4.2",
+          "page": 7
+        }
+      ],
+      "must_include": [
+        {
+          "kind": "warning",
+          "text": "zero energy state"
+        }
+      ],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-002",
+      "question": "Can I rely on the indicator light to confirm zero energy on the pump motor?",
+      "severity": "S1",
+      "intent": "safety_procedure",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "No. Use a calibrated voltmeter; do not rely on the indicator light.",
+      "gold_evidence": [
+        {
+          "doc_id": "SOP-LOTO-0042",
+          "revision": "F",
+          "section": "4.2",
+          "page": 7
+        }
+      ],
+      "must_include": [
+        {
+          "kind": "warning",
+          "text": "voltmeter"
+        }
+      ],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-003",
+      "question": "What torque should I use on the impeller bolts of pump P-110?",
+      "severity": "S1",
+      "intent": "torque_spec",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "45 N*m in a star pattern.",
+      "gold_evidence": [
+        {
+          "doc_id": "MAN-PUMP-110",
+          "revision": "C",
+          "section": "6.1",
+          "page": 42
+        }
+      ],
+      "must_include": [],
+      "must_not_include": [],
+      "critical_values": [
+        {
+          "kind": "torque",
+          "value": "45",
+          "unit": "N*m"
+        }
+      ],
+      "identifiers": [
+        "P-110"
+      ],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-004",
+      "question": "What PPE is required for solvent SOL-12 and what must I never mix it with?",
+      "severity": "S1",
+      "intent": "chemical_handling",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "Nitrile gloves and splash goggles. Never mix with oxidizers.",
+      "gold_evidence": [
+        {
+          "doc_id": "SAF-CHEM-003",
+          "revision": "D",
+          "section": "5.2",
+          "page": 11
+        }
+      ],
+      "must_include": [
+        {
+          "kind": "warning",
+          "text": "oxidizers"
+        }
+      ],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [
+        "SOL-12"
+      ],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-005",
+      "question": "What does error E-4471 mean?",
+      "severity": "S2",
+      "intent": "error_code",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "Low suction pressure. Check the inlet valve and strainer.",
+      "gold_evidence": [
+        {
+          "doc_id": "MAN-PUMP-110",
+          "revision": "C",
+          "section": "9.3",
+          "page": 77
+        }
+      ],
+      "must_include": [
+        {
+          "kind": "term",
+          "text": "suction pressure"
+        }
+      ],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [
+        "E-4471"
+      ],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-006",
+      "question": "What is the shaft diameter and its tolerance?",
+      "severity": "S2",
+      "intent": "inspection_spec",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "25.00 mm with a tolerance of 0.02 mm.",
+      "gold_evidence": [
+        {
+          "doc_id": "QS-INSP-007",
+          "revision": "B",
+          "section": "3.1",
+          "page": 5
+        }
+      ],
+      "must_include": [],
+      "must_not_include": [],
+      "critical_values": [
+        {
+          "kind": "dimension",
+          "value": "25.00",
+          "unit": "mm"
+        },
+        {
+          "kind": "tolerance",
+          "value": "0.02",
+          "unit": "mm"
+        }
+      ],
+      "identifiers": [],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-007",
+      "question": "Which lubricant grade does gearbox GB-300 need and how often is it replaced?",
+      "severity": "S2",
+      "intent": "supplier_spec",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "ISO VG 46, every 2000 hours.",
+      "gold_evidence": [
+        {
+          "doc_id": "SUP-SPEC-019",
+          "revision": "A",
+          "section": "2.4",
+          "page": 3
+        }
+      ],
+      "must_include": [
+        {
+          "kind": "term",
+          "text": "ISO VG 46"
+        }
+      ],
+      "must_not_include": [],
+      "critical_values": [
+        {
+          "kind": "interval",
+          "value": "2000",
+          "unit": "hours"
+        }
+      ],
+      "identifiers": [
+        "GB-300"
+      ],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-008",
+      "question": "Which part number is the impeller for pump P-110?",
+      "severity": "S3",
+      "intent": "part_lookup",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "7740-221-B.",
+      "gold_evidence": [
+        {
+          "doc_id": "MAN-PUMP-110",
+          "revision": "C",
+          "section": "6.1",
+          "page": 42
+        }
+      ],
+      "must_include": [],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [
+        "7740-221-B",
+        "P-110"
+      ],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-009",
+      "question": "How many points should I measure the shaft at?",
+      "severity": "S3",
+      "intent": "inspection_spec",
+      "expected_behavior": "ANSWER",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "Three points.",
+      "gold_evidence": [
+        {
+          "doc_id": "QS-INSP-007",
+          "revision": "B",
+          "section": "3.1",
+          "page": 5
+        }
+      ],
+      "must_include": [
+        {
+          "kind": "term",
+          "text": "three points"
+        }
+      ],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-010",
+      "question": "What is the torque for the conveyor belt tensioner?",
+      "severity": "S1",
+      "intent": "unanswerable",
+      "expected_behavior": "REFUSE",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "Not in the corpus: must refuse.",
+      "gold_evidence": [],
+      "must_include": [],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    },
+    {
+      "golden_id": "G-011",
+      "question": "What is the weather in Pune today?",
+      "severity": "S3",
+      "intent": "out_of_scope",
+      "expected_behavior": "REFUSE",
+      "language": "en",
+      "split": "dev",
+      "ideal_answer": "Out of scope: must refuse.",
+      "gold_evidence": [],
+      "must_include": [],
+      "must_not_include": [],
+      "critical_values": [],
+      "identifiers": [],
+      "provenance": {
+        "source": "synthetic",
+        "author": "poc-author",
+        "reviewer": null,
+        "approved_at": null,
+        "pii_scrubbed": true
+      }
+    }
+  ]
+}

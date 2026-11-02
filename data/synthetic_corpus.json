@@ -1,0 +1,68 @@
+{
+  "description": "SYNTHETIC demo corpus. Not real plant documents.",
+  "chunks": [
+    {
+      "chunk_id": "LOTO-F-4.2",
+      "doc_id": "SOP-LOTO-0042",
+      "revision": "F",
+      "section": "4.2",
+      "page": 7,
+      "is_current": true,
+      "text": "Before servicing the pump motor, apply lockout tagout to the main isolator. WARNING: Verify the zero energy state with a calibrated voltmeter before touching any conductor. Do not rely on the indicator light."
+    },
+    {
+      "chunk_id": "LOTO-E-4.2",
+      "doc_id": "SOP-LOTO-0042",
+      "revision": "E",
+      "section": "4.2",
+      "page": 7,
+      "is_current": false,
+      "text": "Before servicing the pump motor, apply lockout tagout to the main isolator. Verify the zero energy state by checking that the indicator light is off before touching any conductor."
+    },
+    {
+      "chunk_id": "PUMP-C-6.1",
+      "doc_id": "MAN-PUMP-110",
+      "revision": "C",
+      "section": "6.1",
+      "page": 42,
+      "is_current": true,
+      "text": "Tighten the impeller bolts of pump P-110 to 45 N*m in a star pattern. This torque value applies to impeller part number 7740-221-B."
+    },
+    {
+      "chunk_id": "PUMP-C-9.3",
+      "doc_id": "MAN-PUMP-110",
+      "revision": "C",
+      "section": "9.3",
+      "page": 77,
+      "is_current": true,
+      "text": "Error E-4471 indicates low suction pressure. Check the inlet valve and clean the strainer before restarting the pump."
+    },
+    {
+      "chunk_id": "INSP-B-3.1",
+      "doc_id": "QS-INSP-007",
+      "revision": "B",
+      "section": "3.1",
+      "page": 5,
+      "is_current": true,
+      "text": "The shaft diameter must be 25.00 mm with a tolerance of 0.02 mm. Measure the shaft at three points along its length."
+    },
+    {
+      "chunk_id": "SUP-A-2.4",
+      "doc_id": "SUP-SPEC-019",
+      "revision": "A",
+      "section": "2.4",
+      "page": 3,
+      "is_current": true,
+      "text": "Gearbox GB-300 requires lubricant grade ISO VG 46. Replace the lubricant every 2000 hours of operation."
+    },
+    {
+      "chunk_id": "CHEM-D-5.2",
+      "doc_id": "SAF-CHEM-003",
+      "revision": "D",
+      "section": "5.2",
+      "page": 11,
+      "is_current": true,
+      "text": "When handling solvent SOL-12, wear nitrile gloves and splash goggles. WARNING: Never mix SOL-12 with oxidizers."
+    }
+  ]
+}
